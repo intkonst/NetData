@@ -1,0 +1,14 @@
+2026-03-19 19:18:26.070 | DEBUG    | __main__:<module>:25 - Это сообщение для отладки (DEBUG)
+2026-03-19 19:18:26.071 | INFO     | __main__:<module>:26 - Информационное сообщение (INFO)
+2026-03-19 19:18:26.071 | SUCCESS  | __main__:<module>:27 - Успешное выполнение операции (SUCCESS)
+2026-03-19 19:18:26.071 | WARNING  | __main__:<module>:28 - Предупреждение (WARNING)
+2026-03-19 19:18:26.072 | ERROR    | __main__:<module>:29 - Произошла ошибка (ERROR)
+2026-03-19 19:18:26.072 | CRITICAL | __main__:<module>:30 - Критическая ошибка (CRITICAL)
+2026-03-19 19:18:26.072 | INFO     | __main__:<module>:35 - Пользователь Alice выполнил вход в систему
+2026-03-19 19:18:26.072 | ERROR    | __main__:<module>:41 - Поймано исключение:
+Traceback (most recent call last):
+
+> File "C:\Users\intkonst\Desktop\Проекты\netdata\main.py", line 39, in <module>
+    x = 1 / 0
+
+ZeroDivisionError: division by zero
