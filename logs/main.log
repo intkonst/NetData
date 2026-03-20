@@ -1,0 +1,15 @@
+2026-03-20 11:21:34.771 | INFO     | __main__:<module>:30 - Logger initialized successfully
+2026-03-20 11:21:34.771 | INFO     | __main__:<module>:31 - Application starting...
+2026-03-20 11:21:34.773 | INFO     | api:_load_config:50 - Config loaded from config.json
+2026-03-20 11:21:34.808 | INFO     | api:__init__:39 - API initialized successfully
+2026-03-20 11:21:34.809 | INFO     | api:run:232 - Starting API server on http://127.0.0.1:8000
+2026-03-20 11:22:11.591 | INFO     | api:receive_data:75 - Received data: {'sensor': 'temperature', 'value': 25.5, 'unit': 'Celsius'}
+2026-03-20 11:22:11.598 | DEBUG    | api:register:85 - Starting registration validation for admin, email: invalid-email, password length: 3
+2026-03-20 11:22:11.599 | WARNING  | api:register:90 - Registration validation failed for admin: ['Пароль должен содержать минимум 8 символов', 'Пароль должен содержать хотя бы одну заглавную букву', 'Пароль должен содержать хотя бы одну строчную букву', 'Пароль должен содержать хотя бы один спецсимвол (!@#$%^&* и т.д.)', 'Введён некорректный адрес электронной почты']
+2026-03-20 11:22:11.605 | DEBUG    | api:register:85 - Starting registration validation for user_1773994931, email: konstantinovalex38@gmail.com, password length: 16
+2026-03-20 11:22:11.605 | DEBUG    | api:register:97 - Registration validation passed for user_1773994931
+2026-03-20 11:22:11.606 | DEBUG    | api:register:112 - Token generation starting for user_1773994931
+2026-03-20 11:22:11.607 | DEBUG    | api:register:118 - Adding user to database: user_1773994931
+2026-03-20 11:22:11.625 | INFO     | api:register:132 - New user registered: user_1773994931 (ID: 4)
+2026-03-20 11:22:11.625 | DEBUG    | api:register:134 - Sending token email to konstantinovalex38@gmail.com for user user_1773994931
+2026-03-20 11:22:12.588 | INFO     | api:_send_token_email:215 - Token email sent to konstantinovalex38@gmail.com for user user_1773994931
