@@ -7,9 +7,7 @@ from typing import Optional
 
 
 DB_PATH = Path(__file__).resolve().parent / "netdata.db"
-
 CSV_PATH = Path(__file__).resolve().parent / "data_with_coords.csv"
-
 ORG_CSV_PATH = Path(__file__).resolve().parent / "organizations.csv"
 
 
@@ -43,7 +41,6 @@ class Database:
                     """
                 )
             
-            
             if not self._table_exists('organization'):
                 self.conn.execute(
                     """
@@ -67,7 +64,6 @@ class Database:
                                 org_data
                             )
 
-            
             if not self._table_exists('token'):
                 self.conn.execute(
                     """
@@ -81,7 +77,6 @@ class Database:
                     )
                     """
                 )
-            
             
             if not self._table_exists('buildings'):
                 self.conn.execute(
@@ -97,14 +92,25 @@ class Database:
                         unom_id TEXT,
                         district TEXT,
                         build_year INTEGER,
-                        longitude REAL,  -- Числовой тип
-                        latitude REAL    -- Числовой тип
+                        longitude REAL,
+                        latitude REAL
                     )
                     """
                 )
                 
                 
-                self.conn.execute("CREATE INDEX idx_coords ON buildings (latitude, longitude)")
+                self.conn.execute("CREATE INDEX IF NOT EXISTS idx_coords ON buildings (latitude, longitude)")
+    
+                
+                self.conn.execute(
+                    """
+                    CREATE VIRTUAL TABLE IF NOT EXISTS buildings_fts USING fts5(
+                        full_address,
+                        content='buildings',
+                        content_rowid='rowid'
+                    )
+                    """
+                )
 
                 if CSV_PATH.exists():
                     with open(CSV_PATH, mode='r', encoding='utf-8') as file:
@@ -114,20 +120,26 @@ class Database:
                         for row in reader:
                             if len(row) == 12:
                                 try:
-                                    
                                     processed_row = list(row)
                                     processed_row[9] = int(row[9]) if row[9].isdigit() else 0 # build_year
                                     processed_row[10] = float(row[10]) # longitude
                                     processed_row[11] = float(row[11]) # latitude
                                     data_to_insert.append(tuple(processed_row))
                                 except ValueError:
-                                
                                     continue
                         
                         if data_to_insert:
+                           
                             self.conn.executemany(
                                 "INSERT INTO buildings VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                                 data_to_insert
+                            )
+                           
+                            self.conn.execute(
+                                """
+                                INSERT INTO buildings_fts(rowid, full_address) 
+                                SELECT rowid, full_address FROM buildings
+                                """
                             )
 
     def execute(self, sql: str, params: tuple = ()) -> sqlite3.Cursor:
@@ -143,7 +155,6 @@ if __name__ == "__main__":
     db = Database()
     print(f"SQLite DB initialized at {db.db_path}")
 
-    
     res = db.execute("SELECT COUNT(*) FROM organization").fetchone()
     print(f"Organizations loaded into FTS5 table: {res[0]}")
     db.close()

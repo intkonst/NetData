@@ -271,7 +271,7 @@ class API():
                 requests_limit = self.token_config["requestlimit"]
                 time_limit_days = self.token_config["timelimit"]
 
-                expiration_date = datetime.now() + timedelta(days=30) # Форматируем в строку, понятную для БД (например, 2026-04-20 12:00:00)
+                expiration_date = datetime.now() + timedelta(days=30) 
                 expires_at_str = expiration_date.strftime("%Y-%m-%d %H:%M:%S")
 
                 with self.db.conn:
@@ -320,9 +320,14 @@ class API():
                 logger.debug("Correct cleaning")
                 
                 building_cur = self.db.execute(
-                    "SELECT * FROM buildings WHERE buildings MATCH ? LIMIT 1",
+                    """
+                    SELECT b.* FROM buildings b
+                    JOIN buildings_fts fts ON b.rowid = fts.rowid
+                    WHERE buildings_fts MATCH ? LIMIT 1
+                    """,
                     (clean_query,)
                 )
+
                 logger.debug("Correct execute")
                 building = building_cur.fetchone()
 

@@ -5,7 +5,7 @@ def main():
 
     base_url = "http://127.0.0.1:8000"
 
-    token = "cXeCObwiqJanLzMAOD6URUkWyV5nLCm8naeotWhqKtk" 
+    token = "j7qH_CrfblQM3QXRSQh8UVXskC97YwCAXBs6JiOPf50" 
 
     print("=== NetData API Coords Client ===")
     print(f"Подключение к: {base_url}/coords")
