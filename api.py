@@ -271,7 +271,8 @@ class API():
                 requests_limit = self.token_config["requestlimit"]
                 time_limit_days = self.token_config["timelimit"]
 
-                expiration_date = datetime.now() + timedelta(days=30) 
+                # Исправлено: теперь используем time_limit_days вместо 30
+                expiration_date = datetime.now() + timedelta(days=time_limit_days) 
                 expires_at_str = expiration_date.strftime("%Y-%m-%d %H:%M:%S")
 
                 with self.db.conn:
@@ -280,7 +281,7 @@ class API():
                         (user['id'], api_token, requests_limit, expires_at_str)
                     )
 
-               
+                # Теперь данные в базе и в письме будут синхронны
                 background_tasks.add_task(
                     self._send_api_token_email,
                     user['email'],
