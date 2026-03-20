@@ -4,6 +4,10 @@
     "port": 8000,
     "title": "NetData API",
     "version": "1.0.0",
+    "TOKEN": {
+      "timelimit": 10,
+      "requestlimit": 10
+    },
     "SMTP": {
       "host": "smtp.gmail.com",
       "port": 587,

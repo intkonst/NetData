@@ -33,7 +33,7 @@ logger.info("Application starting...")
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)  
     signal.signal(signal.SIGTERM, signal_handler)
-    ek = 1  # Default exit code for unexpected termination
+    ek = 1  
     try:
         db = Database()
         api = API(db)  

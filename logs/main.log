@@ -1,15 +1,23 @@
-2026-03-20 11:21:34.771 | INFO     | __main__:<module>:30 - Logger initialized successfully
-2026-03-20 11:21:34.771 | INFO     | __main__:<module>:31 - Application starting...
-2026-03-20 11:21:34.773 | INFO     | api:_load_config:50 - Config loaded from config.json
-2026-03-20 11:21:34.808 | INFO     | api:__init__:39 - API initialized successfully
-2026-03-20 11:21:34.809 | INFO     | api:run:232 - Starting API server on http://127.0.0.1:8000
-2026-03-20 11:22:11.591 | INFO     | api:receive_data:75 - Received data: {'sensor': 'temperature', 'value': 25.5, 'unit': 'Celsius'}
-2026-03-20 11:22:11.598 | DEBUG    | api:register:85 - Starting registration validation for admin, email: invalid-email, password length: 3
-2026-03-20 11:22:11.599 | WARNING  | api:register:90 - Registration validation failed for admin: ['Пароль должен содержать минимум 8 символов', 'Пароль должен содержать хотя бы одну заглавную букву', 'Пароль должен содержать хотя бы одну строчную букву', 'Пароль должен содержать хотя бы один спецсимвол (!@#$%^&* и т.д.)', 'Введён некорректный адрес электронной почты']
-2026-03-20 11:22:11.605 | DEBUG    | api:register:85 - Starting registration validation for user_1773994931, email: konstantinovalex38@gmail.com, password length: 16
-2026-03-20 11:22:11.605 | DEBUG    | api:register:97 - Registration validation passed for user_1773994931
-2026-03-20 11:22:11.606 | DEBUG    | api:register:112 - Token generation starting for user_1773994931
-2026-03-20 11:22:11.607 | DEBUG    | api:register:118 - Adding user to database: user_1773994931
-2026-03-20 11:22:11.625 | INFO     | api:register:132 - New user registered: user_1773994931 (ID: 4)
-2026-03-20 11:22:11.625 | DEBUG    | api:register:134 - Sending token email to konstantinovalex38@gmail.com for user user_1773994931
-2026-03-20 11:22:12.588 | INFO     | api:_send_token_email:215 - Token email sent to konstantinovalex38@gmail.com for user user_1773994931
+2026-03-20 22:30:05.542 | INFO     | __main__:<module>:30 - Logger initialized successfully
+2026-03-20 22:30:05.542 | INFO     | __main__:<module>:31 - Application starting...
+2026-03-20 22:30:05.578 | INFO     | api:_load_config:112 - Config loaded from config.json
+2026-03-20 22:30:05.601 | INFO     | api:__init__:91 - API initialized successfully
+2026-03-20 22:30:05.601 | INFO     | api:run:575 - Starting API server on http://127.0.0.1:8000
+2026-03-20 22:32:27.147 | DEBUG    | api:register:159 - Starting registration validation for inv, email: wrong-email-format
+2026-03-20 22:33:41.263 | DEBUG    | api:register:159 - Starting registration validation for user_1774035215, email: konstantinovalex38@gmail.com
+2026-03-20 22:33:42.128 | INFO     | api:_send_verification_email:527 - Verification email sent to konstantinovalex38@gmail.com for user user_1774035215
+2026-03-20 22:33:54.014 | INFO     | api:verify_account:243 - User user_1774035215 successfully verified email.
+2026-03-20 22:34:09.398 | INFO     | api:_send_api_token_email:562 - API Token email sent to konstantinovalex38@gmail.com for user user_1774035215
+2026-03-20 22:36:23.886 | DEBUG    | api:decrease_token_limit:70 - Counter decreased for token: cXeCObwiqJ...
+2026-03-20 22:36:23.886 | INFO     | api:receive_data:150 - Received data: {'sensor': 'terminal_test', 'value': 42.0}
+2026-03-20 22:39:49.976 | DEBUG    | api:search_by_address:314 - Start searching...
+2026-03-20 22:39:49.977 | DEBUG    | api:search_by_address:320 - Correct cleaning
+2026-03-20 22:39:49.977 | ERROR    | api:search_by_address:379 - Search error: no such column: buildings
+2026-03-20 22:40:00.593 | DEBUG    | api:search_by_address:314 - Start searching...
+2026-03-20 22:40:00.594 | DEBUG    | api:search_by_address:320 - Correct cleaning
+2026-03-20 22:40:00.594 | ERROR    | api:search_by_address:379 - Search error: no such column: buildings
+2026-03-20 22:41:30.163 | DEBUG    | api:search_by_coords:395 - Start searching near Coords: 55.8083, 37.537
+2026-03-20 22:41:30.167 | DEBUG    | api:decrease_token_limit:70 - Counter decreased for token: cXeCObwiqJ...
+2026-03-20 22:41:44.312 | DEBUG    | api:search_by_coords:395 - Start searching near Coords: 55.8083, 37.537
+2026-03-20 22:41:44.352 | DEBUG    | api:decrease_token_limit:70 - Counter decreased for token: cXeCObwiqJ...
+2026-03-20 22:57:48.227 | INFO     | __main__:signal_handler:10 - Received signal 2, shutting down...
