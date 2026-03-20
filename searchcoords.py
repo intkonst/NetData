@@ -9,14 +9,13 @@ def main():
     console = Console()
     base_url = "http://127.0.0.1:8000"
 
-    # Красивый заголовок
     console.print(Panel.fit(
         "[bold cyan]NetData API Coords Client[/bold cyan]\n"
         "[white]Инструмент для поиска объектов по координатам и радиусу[/white]",
         border_style="cyan"
     ))
 
-    # Ручной ввод токена
+ 
     rprint("[yellow]Совет:[/yellow] Токен можно найти в письме после регистрации в системе.")
     token = Prompt.ask("[bold green]Введите ваш API токен[/bold green]")
 
@@ -55,7 +54,7 @@ def main():
                 "Content-Type": "application/json"
             }
 
-            # Анимация загрузки во время запроса
+
             with console.status("[bold green]Запрос к API /coords...") as status:
                 response = requests.post(
                     f"{base_url}/coords", 
@@ -70,7 +69,7 @@ def main():
                     console.print("\n[bold green]✅ Ответ получен:[/bold green]")
                     console.print(f"[bold cyan]Найдено объектов:[/bold cyan] [bold white]{result.get('count_found', 0)}[/bold white]")
                     
-                    # Красивый вывод JSON
+         
                     console.print_json(data=result)
                     
                 elif response.status_code == 403:

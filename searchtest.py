@@ -10,14 +10,14 @@ def main():
     console = Console()
     base_url = "http://127.0.0.1:8000"
 
-    # Красивый заголовок
+
     console.print(Panel.fit(
         "[bold cyan]NetData API Client[/bold cyan]\n"
         "[white]Инструмент для проверки геокодирования[/white]",
         border_style="cyan"
     ))
 
-    # Ручной ввод токена
+  
     rprint("[yellow]Совет:[/yellow] Токен можно найти в письме после регистрации в системе.")
     token = Prompt.ask("[bold green]Введите ваш API токен[/bold green]")
 
@@ -53,10 +53,10 @@ def main():
                 if response.status_code == 200:
                     result = response.json()
                     
-                    # Красивый вывод результата
+                 
                     console.print("\n[bold green]✅ Ответ получен:[/bold green]")
                     
-                    # Если API вернул данные здания
+            
                     if isinstance(result, dict) and "full_address" in result:
                         table = Table(title="Результат поиска", show_header=True, header_style="bold magenta")
                         table.add_column("Поле", style="dim")
@@ -70,7 +70,7 @@ def main():
                         
                         console.print(table)
                     else:
-                        # Если формат ответа другой, просто печатаем JSON
+                    
                         console.print_json(data=result)
                 
                 elif response.status_code == 403:
